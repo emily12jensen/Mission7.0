@@ -1,23 +1,24 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model List<Books>
 
 <div class="text-center">
     <h1 class="display-4">Bookstore</h1>
     <p></p>
 </div>
-@*@foreach (Project p in Model.Projects)
+@foreach (Books b in Model)
 {
-    <h3>@p.ProjectName</h3>
+    <h3>@b.Title</h3>
     <ul>
-        <li>Title: @p.ProjectType</li>
-        <li>Author: @p.ProjectRegionalProgram</li>
-        <li>Publisher: @p.ProjectImpact Served</li>
-        <li>ISBN: @p.ProjectPhase</li>
-        <li>Classification/Category: @p.ProjectFunctionalityStatus</li>
-        <li>Number Of Pages: @p.ProjectPhase</li>
-        <li>Price: @p.ProjectPhase</li>
+        <li>Title: @b.Author</li>
+        <li>Author: @b.Publisher</li>
+        <li>Publisher: @b.Publisher</li>
+        <li>ISBN: @b.ISBN</li>
+        <li>Classification/Category: @b.Classification</li>
+        <li>Number Of Pages: @b.PageCount</li>
+        <li>Price: @b.Price</li>
     </ul>
 
     <br />
-}*@
+}

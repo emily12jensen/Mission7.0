@@ -11,16 +11,18 @@ namespace Mission7._0.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private BookStoreContext context { get; set; }
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+        public HomeController(BookStoreContext temp) => context = temp;
         public IActionResult Index()
         {
-            return View();
+            var blah = context.Books.ToList();
+            return View(blah);
         }
 
         public IActionResult Privacy()

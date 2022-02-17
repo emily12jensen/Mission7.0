@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,8 @@ namespace Mission7._0.Models
 {
     public partial class Books
     {
+        [Key]
+        [Required]
         public int BookID { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }

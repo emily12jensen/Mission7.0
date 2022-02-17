@@ -12,9 +12,11 @@ namespace Mission7._0.Models
         {
 
         }
-        public BookStoreContext(DbContextOptions<BookStoreContext> options) : base(options)
+        public BookStoreContext(DbContextOptions<BookStoreContext> options) 
+            : base(options)
         {
 
         }
+        public DbSet<Books> Books { get; set; }
     }
 }
