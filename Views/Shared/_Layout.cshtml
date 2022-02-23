@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - Mission7._0</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    
 </head>
 <body>
     <header>
@@ -28,12 +29,34 @@
         </nav>
     </header>
     <div class="container">
-        
-        
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        
+
+
+        @*Adding code here*@
+        <div class="bg-dark text-white p-2">
+            <span class="navbar-brand m-lg-2">Water Project</span>
+
+        </div>
+
+        <div class="row m-1 p-1">
+
+            <div id="types" class="col-3">
+                <vc:types></vc:types>
+            </div>
+
+
+            <div class="col-9">
+                <div>
+                    @RenderBody()
+                </div>
+
+            </div>
+        </div>
+
+
+        @*<main role="main" class="pb-3">
+            @RenderBody()
+        </main>*@
+
     </div>
 
     <footer class="border-top footer text-muted">
