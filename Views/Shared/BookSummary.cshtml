@@ -1,0 +1,24 @@
+﻿
+@{
+}
+
+@model Books
+
+
+<div class="bg-light" p-1>
+    <h3>@Model.Title</h3>
+    <span class="badge bg-info" style="float:right">
+        <li>Number Of Pages: @Model.PageCount</li>
+    </span>
+</div>
+        <ul>
+            <li>Title: @Model.Author</li>
+            <li>Author: @Model.Publisher</li>
+            <li>Publisher: @Model.Publisher</li>
+            <li>ISBN: @Model.ISBN</li>
+            <li>Classification/Category: @Model.Classification</li>
+            
+            <li>Price: @Model.Price</li>
+        </ul>
+
+        <br />

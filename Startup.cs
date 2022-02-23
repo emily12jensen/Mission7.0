@@ -63,6 +63,8 @@ namespace Mission7._0
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
         }
     }
 }
