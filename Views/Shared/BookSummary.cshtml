@@ -4,21 +4,28 @@
 
 @model Books
 
-
-<div class="bg-light" p-1>
-    <h3>@Model.Title</h3>
-    <span class="badge bg-info" style="float:right">
-        <li>Number Of Pages: @Model.PageCount</li>
-    </span>
-</div>
+<div class="card card-outline-primary m-1 p-1">
+    <div class="bg-faded p-1">
+        <div class="bg-light" p-1>
+            <h3>@Model.Title</h3>
+            
+                
+            </span>
+        </div>
         <ul>
             <li>Title: @Model.Author</li>
             <li>Author: @Model.Publisher</li>
             <li>Publisher: @Model.Publisher</li>
             <li>ISBN: @Model.ISBN</li>
             <li>Classification/Category: @Model.Classification</li>
-            
-            <li>Price: @Model.Price</li>
+            <li>Number Of Pages: @Model.PageCount</li>
+
+            <ul>
+                <span class="badge badge-pill badge-primary" style="float:right">
+                    Price: $@Model.Price
+            </ul>
         </ul>
+        </div>
+    </div>
 
         <br />
