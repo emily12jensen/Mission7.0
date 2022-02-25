@@ -29,9 +29,11 @@ namespace Mission7._0.Models.Infrastructure
         public PageInfo PageBlah { get; set; }
         public string PageAction { get; set; }
         public string PageClass { get; set; }
-        public bool PageClassEnabled { get; set; }
+        public bool PageClassEnabled { get; set; } = false;
         public string PageClassNormal { get; set; }
         public string PageClassSelected { get; set; }
+
+
         public override void Process(TagHelperContext thc, TagHelperOutput tho)
         {
             IUrlHelper uh = uhf.GetUrlHelper(vc);
