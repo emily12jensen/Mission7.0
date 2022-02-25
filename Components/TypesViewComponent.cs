@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Mission7._0.Components
 {
-    public class TypeViewsComponent : ViewComponent
+    public class TypesViewComponent : ViewComponent
     {
        
             private IBookStoreRepository repo { get; set; }
 
-            public TypeViewsComponent(IBookStoreRepository temp)
+            public TypesViewComponent(IBookStoreRepository temp)
             {
                 repo = temp;
             }
