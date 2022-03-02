@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Mission7._0.Infrastructure;
 using Mission7._0.Models;
 
 namespace Mission7._0.Pages
@@ -16,16 +17,21 @@ namespace Mission7._0.Pages
             repo = temp;
         }
         public Basket basket { get; set; }
-        public void OnGet(Basket b)
+        public string ReturnUrl { get; set; }
+        public void OnGet(string returnUrl)
         {
-            basket = b;
+            ReturnUrl = returnUrl ?? "/";
+            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
         }
-        public IActionResult OnPost( string Title)
+        public IActionResult OnPost( string Title, string returnUrl)
         {
-            basket = new Basket();
+            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
             Books b = repo.Books.FirstOrDefault(x => x.Title == Title);
             basket.AddItem(b, 1);
-            return RedirectToPage(basket);
+
+            HttpContext.Session.SetJson("basket", basket);
+
+            return RedirectToPage(new { ReturnUrl = returnUrl });
         }
     }
 }

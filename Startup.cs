@@ -37,6 +37,8 @@ namespace Mission7._0
             services.AddScoped<IBookStoreRepository, EFBookStoreRepository>();
             services.AddRazorPages();
             services.AddRazorPages();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +57,7 @@ namespace Mission7._0
             app.UseHttpsRedirection();
             //use  wwwroot
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 

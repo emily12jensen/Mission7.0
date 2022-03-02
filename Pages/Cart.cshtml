@@ -20,7 +20,8 @@
             <tr>
                 <td>@i.Books.Title</td>
                 <td>@i.Quantity</td>
-                <td>25</td>
+                @*Also need to change this to the book amount*@
+                <td>10</td>
                 @*I need to make sure this is off of the price of the books.*@ 
                 <td>@(i.Quantity * 10)</td>
             </tr>
@@ -34,6 +35,6 @@
     </tfoot>
 </table>
 
-@*<div>
+<div>
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Donating</a>
-</div>*@
+</div>
