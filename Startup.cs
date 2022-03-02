@@ -15,12 +15,13 @@ namespace Mission7._0
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; set; }
         public Startup(IConfiguration temp)
         {
             Configuration = temp;
         }
 
-        public IConfiguration Configuration { get; set; }
+        
        
         // This method gets called by the runtime. Use this method to add services to the container.
 
@@ -34,6 +35,8 @@ namespace Mission7._0
                 options.UseSqlite(Configuration["ConnectionStrings:BookStoreDBConnection"]);
             });
             services.AddScoped<IBookStoreRepository, EFBookStoreRepository>();
+            services.AddRazorPages();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,12 +70,15 @@ namespace Mission7._0
                    defaults: new { Controller = "Home", action = "Index" });
 
                 endpoints.MapControllerRoute(
-                    name: "default",
+                    name: "paging",
                     pattern: "{controller=Home}/{action=Index}/{pageNum = 1}");
                 //pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
                     "type", "{Category}", new { Controller = "Home", action = "Index", pageNum = 1 });
+
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
 
                 
             });

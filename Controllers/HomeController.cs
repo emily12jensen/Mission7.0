@@ -12,13 +12,14 @@ namespace Mission7._0.Controllers
 {
     public class HomeController : Controller
     {
-        private BookStoreContext repo;
+        private IBookStoreRepository repo;
      
-        public HomeController(BookStoreContext temp)
+        public HomeController(IBookStoreRepository temp)
         {
             repo = temp;
         }
-        public IActionResult Index( string Category ,int pageNum = 1)
+        
+        public IActionResult Index(string Category, int pageNum = 1)
         {
             int pageSize = 5;
 
@@ -33,7 +34,7 @@ namespace Mission7._0.Controllers
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumProjects = 
+                    TotalNumProjects =
                         (Category == null
                             ? repo.Books.Count()
                             : repo.Books.Where(x => x.Category == Category).Count()),

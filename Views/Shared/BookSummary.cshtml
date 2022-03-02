@@ -8,8 +8,8 @@
     <div class="bg-faded p-1">
         <div class="bg-light" p-1>
             <h3>@Model.Title</h3>
-            
-                
+
+
             </span>
         </div>
         <ul>
@@ -25,7 +25,19 @@
                     Price: $@Model.Price
             </ul>
         </ul>
-        </div>
     </div>
+    <form method="post" asp-page="/Cart">
+
+        <input type="hidden" asp-for="@Model.Title"/>
+
+        <span class="card-text">
+            <button type="submit" class="btn btn-success" btn-sm float-end>Add to Cart</button>
+
+        </span>
+
+    </form>
+</div>
+
+
 
         <br />
