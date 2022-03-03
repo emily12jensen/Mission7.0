@@ -9,6 +9,7 @@ namespace Mission7._0.Infrastructure
     public static class UrlExtensions
     {
         public static string PathAndQuery(this HttpRequest request) =>
+// testtest
             request.QueryString.HasValue ? $"{request.Path}{request.QueryString}" : request.Path.ToString();
     }
 }
