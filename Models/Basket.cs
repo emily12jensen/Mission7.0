@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Mission7._0.Models
 {
@@ -17,7 +18,10 @@ namespace Mission7._0.Models
                 Items.Add(new BasketLineItem
                 {
                     Books = bo,
-                    Quantity = qty
+                    Quantity = qty,
+                    Price = bo.Price
+                    
+                    
                 });
             }
             else
@@ -28,12 +32,11 @@ namespace Mission7._0.Models
         public double CalculateTotal()
         {
 // change this to the price of the books. 
-            double sum = Items.Sum(x => x.Quantity * 10);
+            double sum = Items.Sum(x => x.Quantity * x.Price);
             return sum;
         }
 
     }
-
     
     public class BasketLineItem
     {
@@ -41,5 +44,6 @@ namespace Mission7._0.Models
         //check that it is Books and not Book
         public Books Books { get; set; }
         public int Quantity { get; set; }
+        public double Price { get; set; }
     }
 }
