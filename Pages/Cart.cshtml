@@ -21,9 +21,18 @@
                 <td>@i.Books.Title</td>
                 <td>@i.Quantity</td>
                 @*Also need to change this to the book amount*@
-                <td>10</td>
+                <td>(@i.Price.ToString("c"))</td>
                 @*I need to make sure this is off of the price of the books.*@ 
-                <td>@(i.Quantity * 10)</td>
+                <td>@((i.Quantity * i.Price).ToString("c"))</td>
+
+                <td class="text-center">
+                    <form method="post" asp-page-handler="Remove">
+                        <input type="hidden" name="BookID" value="@i.Books.BookID"/>
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl"/>
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    </form>
+
+                </td>
             </tr>
         }
     </tbody>
