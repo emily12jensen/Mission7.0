@@ -29,9 +29,19 @@ namespace Mission7._0.Models
                 line.Quantity += qty;
             }
         }
+
+        public virtual void RemoveItem(Books bo)
+        {
+            Items.RemoveAll(x => x.Books.BookID == bo.BookID);
+
+        }
+        public virtual void ClearBasket()
+        {
+            Items.Clear();
+        }
         public double CalculateTotal()
         {
-// change this to the price of the books. 
+ 
             double sum = Items.Sum(x => x.Quantity * x.Price);
             return sum;
         }
