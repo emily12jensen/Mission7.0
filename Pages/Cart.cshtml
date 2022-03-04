@@ -20,9 +20,9 @@
             <tr>
                 <td>@i.Books.Title</td>
                 <td>@i.Quantity</td>
-                @*Also need to change this to the book amount*@
-                <td>(@i.Price.ToString("c"))</td>
-                @*I need to make sure this is off of the price of the books.*@ 
+               
+                <td>@i.Price.ToString("c")</td>
+                
                 <td>@((i.Quantity * i.Price).ToString("c"))</td>
 
                 <td class="text-center">
