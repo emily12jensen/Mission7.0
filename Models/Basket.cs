@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace Mission7._0.Models
         public List<BasketLineItem> Items { get; set; } = new List<BasketLineItem>();
         public virtual void AddItem( Books bo, int qty)
         {
-            BasketLineItem line = Items.Where(p => p.Books.Title == bo.Title).FirstOrDefault();
+            BasketLineItem line = Items.Where(p => p.Books.BookID == bo.BookID).FirstOrDefault();
 
             if (line == null)
             {
@@ -48,6 +49,7 @@ namespace Mission7._0.Models
     
     public class BasketLineItem
     {
+        [Key]
         public int LineID { get; set;  }
         //check that it is Books and not Book
         public Books Books { get; set; }

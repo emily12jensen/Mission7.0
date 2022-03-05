@@ -24,10 +24,10 @@ namespace Mission7._0.Pages
             ReturnUrl = returnUrl ?? "/";
             //basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
         }
-        public IActionResult OnPost( string Title, string returnUrl)
+        public IActionResult OnPost( string title, string returnUrl)
         {
             //basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
-            Books b = repo.Books.FirstOrDefault(x => x.Title == Title);
+            Books b = repo.Books.FirstOrDefault(x => x.Title == title);
             basket.AddItem(b, 1);
 
            // HttpContext.Session.SetJson("basket", basket);
@@ -36,7 +36,7 @@ namespace Mission7._0.Pages
         }
         public IActionResult OnPostRemove(int bookId, string returnUrl)
         {
-            basket.RemoveItem(basket.Items.First(x => x.Books.BookID == bookId).Books);
+            basket.RemoveItem(repo.Books.FirstOrDefault(x => x.BookID == bookId));
             return RedirectToPage(new { ReturnUrl = returnUrl });
         }
     }
