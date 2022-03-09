@@ -28,6 +28,9 @@ namespace Mission7._0.Models
                 line.Quantity += qty;
             }
         }
+        //added for cart totals on top of page
+        public decimal ComputeTotalValue() =>
+            Items.Sum(e => e.Books.Price * e.Quantity);
 
         public virtual void RemoveItem(Books bo)
         {
