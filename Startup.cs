@@ -43,6 +43,7 @@ namespace Mission7._0
             services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IPurchaseRepository, EFPurchaseRepository>();
+            services.AddServerSideBlazor();
 
         }
 
@@ -87,8 +88,10 @@ namespace Mission7._0
 
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
 
-                
+
             });
 
 

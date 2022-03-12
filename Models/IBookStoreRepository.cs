@@ -8,5 +8,10 @@ namespace Mission7._0.Models
     public interface IBookStoreRepository 
     {
         IQueryable<Books>Books { get; }
+
+        public void SaveBook(Books b);
+        public void CreateBook(Books b);
+        public void DeleteProject(Books b);
+
     }
 }
