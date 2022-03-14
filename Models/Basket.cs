@@ -9,7 +9,7 @@ namespace Mission7._0.Models
     public class Basket
     {
         public List<BasketLineItem> Items { get; set; } = new List<BasketLineItem>();
-        public virtual void AddItem( Books bo, int qty)
+        public virtual void AddItem( Book bo, int qty)
         {
             BasketLineItem line = Items.Where(p => p.Books.BookID == bo.BookID).FirstOrDefault();
 
@@ -32,7 +32,7 @@ namespace Mission7._0.Models
         public decimal ComputeTotalValue() =>
             Items.Sum(e => e.Books.Price * e.Quantity);
 
-        public virtual void RemoveItem(Books bo)
+        public virtual void RemoveItem(Book bo)
         {
             Items.RemoveAll(x => x.Books.BookID == bo.BookID);
     }
@@ -55,7 +55,7 @@ namespace Mission7._0.Models
         [Key]
         public int LineID { get; set;  }
         //check that it is Books and not Book
-        public Books Books { get; set; }
+        public Book Books { get; set; }
         public int Quantity { get; set; }
         public int Price { get; set; }
     }

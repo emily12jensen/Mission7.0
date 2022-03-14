@@ -11,7 +11,7 @@ namespace Mission7._0.Models
     {
         [Key]
         [BindNever]
-        public int DonationId { get; set; }
+        public int PurchaseId { get; set; }
         [BindNever]
         public ICollection<BasketLineItem> Lines { get; set; }
         [Required(ErrorMessage = "Please enter a name:")]

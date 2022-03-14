@@ -25,12 +25,12 @@ namespace Mission7._0.Models
         [JsonIgnore]
         public ISession Session { get; set; }
 
-        public override void AddItem(Books bo, int qty)
+        public override void AddItem(Book bo, int qty)
         {
             base.AddItem(bo, qty);
             Session.SetJson("Basket", this);
         }
-        public override void RemoveItem(Books bo)
+        public override void RemoveItem(Book bo)
         {
             base.RemoveItem(bo);
             Session.SetJson("Basket", this);

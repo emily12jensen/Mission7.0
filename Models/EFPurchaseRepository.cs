@@ -19,7 +19,7 @@ namespace Mission7._0.Models
         public void SavePurchase(Purchase purchase)
         {
             context.AttachRange(purchase.Lines.Select(x => x.Books));
-            if (purchase.DonationId == 0)
+            if (purchase.PurchaseId == 0)
             {
                 context.Purchases.Add(purchase);
             }

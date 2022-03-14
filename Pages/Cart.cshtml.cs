@@ -27,7 +27,7 @@ namespace Mission7._0.Pages
         public IActionResult OnPost( string title, string returnUrl)
         {
             //basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
-            Books b = repo.Books.FirstOrDefault(x => x.Title == title);
+            Book b = repo.Books.FirstOrDefault(x => x.Title == title);
             basket.AddItem(b, 1);
 
            // HttpContext.Session.SetJson("basket", basket);

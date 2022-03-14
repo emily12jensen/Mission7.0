@@ -7,19 +7,19 @@
         <tr>
             <th>Book Id</th>
             <td>Book Name</td>
-            <td></td>
+            <td>Author</td>
         </tr>
     </thead>
     <tbody>
         @if (BookData?.Count() > 0)
             {
                 ///List the projects
-                @foreach (Books b in BookData)
+                @foreach (Book b in BookData)
                 {
                     <tr>
-                        @*<td>@b.BookId</td>
-                        <td>@b.Title</td>*@
-                        <td></td>
+                        <td>@b.BookID</td>
+                        <td>@b.Title</td>
+                        <td>@b.Author</td>
                     </tr>
                 }
             }
@@ -35,7 +35,7 @@
 
 @code {
     public IBookStoreRepository repo => Service;
-    public IEnumerable<Books>BookData { get; set; }
+    public IEnumerable<Book>BookData { get; set; }
     protected async override Task OnInitializedAsync()
     {
         await UpdateData();
@@ -43,7 +43,7 @@
 
     public async Task UpdateData()
     {
-        //BookData = await repo.Books.ToListAsync();
+        BookData = await repo.Books.ToListAsync();
     }
 
 

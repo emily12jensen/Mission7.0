@@ -35,7 +35,7 @@
     public void ResetPurchase(int id) => UpdatePurchase(id, true);
     private void UpdatePurchase(int id, bool donated)
     {
-        Purchase d = repo.Purchases.FirstOrDefault(x => x.DonationId == id);
+        Purchase d = repo.Purchases.FirstOrDefault(x => x.PurchaseId == id);
         d.PurchaseReceived = donated;
         repo.SavePurchase(d);
     }

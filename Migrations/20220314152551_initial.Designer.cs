@@ -9,8 +9,8 @@ using Mission7._0.Models;
 namespace Mission7._0.Migrations
 {
     [DbContext(typeof(BookStoreContext))]
-    [Migration("20220306024345_AddPurchaseTable")]
-    partial class AddPurchaseTable
+    [Migration("20220314152551_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,7 @@ namespace Mission7._0.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("PurchaseDonationId")
+                    b.Property<int?>("PurchaseId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Quantity")
@@ -40,12 +40,12 @@ namespace Mission7._0.Migrations
 
                     b.HasIndex("BooksBookID");
 
-                    b.HasIndex("PurchaseDonationId");
+                    b.HasIndex("PurchaseId");
 
                     b.ToTable("BasketLineItem");
                 });
 
-            modelBuilder.Entity("Mission7._0.Models.Books", b =>
+            modelBuilder.Entity("Mission7._0.Models.Book", b =>
                 {
                     b.Property<int>("BookID")
                         .ValueGeneratedOnAdd()
@@ -82,7 +82,7 @@ namespace Mission7._0.Migrations
 
             modelBuilder.Entity("Mission7._0.Models.Purchase", b =>
                 {
-                    b.Property<int>("DonationId")
+                    b.Property<int>("PurchaseId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -111,6 +111,9 @@ namespace Mission7._0.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("PurchaseReceived")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -118,20 +121,20 @@ namespace Mission7._0.Migrations
                     b.Property<string>("Zip")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("DonationId");
+                    b.HasKey("PurchaseId");
 
                     b.ToTable("Purchases");
                 });
 
             modelBuilder.Entity("Mission7._0.Models.BasketLineItem", b =>
                 {
-                    b.HasOne("Mission7._0.Models.Books", "Books")
+                    b.HasOne("Mission7._0.Models.Book", "Books")
                         .WithMany()
                         .HasForeignKey("BooksBookID");
 
                     b.HasOne("Mission7._0.Models.Purchase", null)
                         .WithMany("Lines")
-                        .HasForeignKey("PurchaseDonationId");
+                        .HasForeignKey("PurchaseId");
                 });
 #pragma warning restore 612, 618
         }
