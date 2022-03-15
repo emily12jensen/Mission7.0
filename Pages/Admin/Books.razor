@@ -7,19 +7,29 @@
         <tr>
             <th>Book Id</th>
             <td>Book Name</td>
-            <td></td>
+            <td>Author</td>
         </tr>
     </thead>
     <tbody>
         @if (BookData?.Count() > 0)
             {
                 ///List the projects
-                @foreach (Books b in BookData)
+                @foreach (Book b in BookData)
                 {
                     <tr>
-                        @*<td>@b.BookId</td>
-                        <td>@b.Title</td>*@
-                        <td></td>
+                        <td>@b.BookID</td>
+                        <td>@b.Title</td>
+                        <td>@b.Author</td>
+
+                        <td>
+                            <NavLink class="btn btn-info btn-sm" href="@GetDetailsUrl(b.BookID)">Details</NavLink>
+                        </td>
+                        <td>
+                            <NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(b.BookID)">Edit</NavLink>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" @onclick="@(x => RemoveBook(b))">Delete</button>
+                        </td>
                     </tr>
                 }
             }
@@ -33,9 +43,11 @@
 
 </table>
 
+<NavLink class="btn btn-primary" href="/admin/books/create">Create</NavLink>
+
 @code {
     public IBookStoreRepository repo => Service;
-    public IEnumerable<Books>BookData { get; set; }
+    public IEnumerable<Book>BookData { get; set; }
     protected async override Task OnInitializedAsync()
     {
         await UpdateData();
@@ -43,15 +55,15 @@
 
     public async Task UpdateData()
     {
-        //BookData = await repo.Books.ToListAsync();
+        BookData = await repo.Books.ToListAsync();
     }
 
 
     public string GetDetailsUrl(long id) => $"/admin/books/details/{id}";
     public string GetEditUrl(long id) => $"/admin/books/edit/{id}";
-    public async Task RemoveProject(Books b)
+    public async Task RemoveBook(Book b)
     {
-        //repo.DeleteProject(b);
+        repo.DeleteBook(b);
         await UpdateData();
     }
 

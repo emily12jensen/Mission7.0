@@ -12,20 +12,20 @@ namespace Mission7._0.Models
         {
             context = temp;
         }
-        public IQueryable<Books> Books => context.Books;
+        public IQueryable<Book> Books => context.Books;
 
-        public void SaveBook(Books b)
+        public void SaveBook(Book b)
         {
             context.SaveChanges();
         }
 
-        public void CreateBook(Books b)
+        public void CreateBook(Book b)
         {
             context.Add(b);
             context.SaveChanges();
         }
 
-        public void DeleteProject(Books b)
+        public void DeleteBook(Book b)
         {
             context.Remove(b);
             context.SaveChanges();

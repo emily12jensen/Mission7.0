@@ -17,7 +17,7 @@ namespace Mission7._0.Models
         {
 
         }
-        public DbSet<Books> Books { get; set; }
+        public DbSet<Book> Books { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
     }
 }
