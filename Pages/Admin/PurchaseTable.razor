@@ -1,4 +1,4 @@
-﻿<table class="table table-dark table-hover" table-bordered>
+﻿<table class="table table-sm table-striped table-hover" table-bordered>
     <thead>
         <tr>
             <th colspan="5" class="text-center">@TableTitle</th>
@@ -12,7 +12,7 @@
         <tr>
             <td>@d.Name</td>
             <td>@d.Zip</td>
-            <th>Project</th>
+            <th>Book</th>
             <th>Quantity</th>
 
             <td>
@@ -34,7 +34,7 @@
         else
         {
             <tr>
-                <td colspan="5" class="text-center">No Orders </td>
+                <td colspan="5" class="text-center">No Orders</td>
             </tr>
         }
     </tbody>
@@ -47,7 +47,7 @@
     public IEnumerable<Purchase> Purchases { get; set; }
 
     [Parameter]
-    public string ButtonLabel { get; set; } = "Collected";
+    public string ButtonLabel { get; set; } = "Shipped";
 
     [Parameter]
     public EventCallback<int> PurchaseSelected { get; set; }
