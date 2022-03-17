@@ -3,19 +3,20 @@
 }
 @model BooksViewModel
 
-<div class="text-center">
+<div class="text-center shadow-lg p-3 mb-5 bg-body rounded">
     <h1 class="display-4">Bookstore</h1>
     <p></p>
 </div>
-@foreach (Book b in Model.Books)
-{
-    <partial name="BookSummary" model="b" />
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+    @foreach (Book b in Model.Books)
+    {
+        <partial name="BookSummary" model="b" />
 
 
-    <br />
-}
+        <br />
+    }
     <div page-blah="@Model.PageInfo" page-action="Index" page-class-enabled="true"
-              page-class="btn" page-class-normal="btn-outline-dark" 
+              page-class="btn" page-class-normal="btn-outline-dark"
               page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>
 
-
+</div>
