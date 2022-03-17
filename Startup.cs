@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,6 +36,13 @@ namespace Mission7._0
             {
                 options.UseSqlite(Configuration["ConnectionStrings:BookStoreDBConnection"]);
             });
+
+            services.AddDbContext<AppIdentityDBContext>(options =>
+                    options.UseSqlite(Configuration["ConnectionStrings:IdentityConnection"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppIdentityDBContext>();
+
+
             services.AddScoped<IBookStoreRepository, EFBookStoreRepository>();
             services.AddRazorPages();
             services.AddRazorPages();
@@ -67,6 +75,9 @@ namespace Mission7._0
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -94,7 +105,7 @@ namespace Mission7._0
 
             });
 
-
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
