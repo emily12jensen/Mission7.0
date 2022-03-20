@@ -14,6 +14,8 @@ namespace Mission7._0.Models
         private const string adminUser = "Admin";
         private const string adminPassword = "413ExtraYeetPeriod(t)!";
 
+        public static int num = 0;
+
         public static async void EnsurePopulated(IApplicationBuilder app)
         {
             AppIdentityDBContext context = app.ApplicationServices.CreateScope().ServiceProvider.GetRequiredService<AppIdentityDBContext>();
@@ -26,7 +28,7 @@ namespace Mission7._0.Models
 
             IdentityUser user = await userManager.FindByIdAsync(adminUser);
 
-            if (userManager == null)
+            if (user == null)
             {
                 user = new IdentityUser(adminUser);
 
